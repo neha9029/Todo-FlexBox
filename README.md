@@ -1,3 +1,15 @@
+# React Task Board 🗂️
+
+A simple three-column task manager built using **React** and **Flexbox**.
+
+## 🔗 Live Demo
+
+[👉 View it on GitHub Pages](https://neha9029.github.io/Todo-FlexBox/)
+
+## 📸 Screenshot
+
+![Task Board](./public/screenshot.png)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
