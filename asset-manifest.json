@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/Todo-FlexBox/static/css/main.28fdaefb.css",
+    "main.js": "/Todo-FlexBox/static/js/main.1740f416.js",
+    "index.html": "/Todo-FlexBox/index.html",
+    "main.28fdaefb.css.map": "/Todo-FlexBox/static/css/main.28fdaefb.css.map",
+    "main.1740f416.js.map": "/Todo-FlexBox/static/js/main.1740f416.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.28fdaefb.css",
+    "static/js/main.1740f416.js"
+  ]
+}
