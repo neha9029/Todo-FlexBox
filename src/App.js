@@ -2,19 +2,37 @@ import { useState } from "react";
 
 export default function App() {
   const [task, setTask] = useState("");
-  const [todoTask, setTodoTask] = useState([]);
+  const [todoTasks, setTodoTasks] = useState([]);
+
+  const [inProgressTasks, setInProgressTasks] = useState([]);
+
+  const [completedTasks, setTasksToCompleted] = useState([]);
 
   function handleAddToList(task) {
     if (task.trim() === "") return;
 
-    setTodoTask((prev) => [...prev, task]);
+    setTodoTasks((prev) => [...prev, task]);
     setTask("");
+  }
+
+  function moveToInProgress(taskIndex) {
+    const task = todoTasks[taskIndex];
+    setInProgressTasks((prev) => [...prev, task]);
+    setTodoTasks((prev) => prev.filter((_, i) => i !== taskIndex));
+  }
+
+  function moveToCompleted(taskIndex) {
+    const task = inProgressTasks[taskIndex];
+    setTasksToCompleted((prev) => [...prev, task]);
+    setInProgressTasks((prev) => prev.filter((_, i) => i !== taskIndex));
   }
 
   return (
     <>
       <Task task={task} setTask={setTask} onAdd={handleAddToList} />
-      <TodoList tasks={todoTask} />
+      <TodoList tasks={todoTasks} onMove={moveToInProgress} />
+      <InProgressList tasks={inProgressTasks} onMove={moveToCompleted} />
+      <CompletedList tasks={completedTasks} />
     </>
   );
 }
@@ -37,14 +55,51 @@ function Task({ task, setTask, onAdd }) {
   );
 }
 
-function TodoList({ tasks }) {
+function TodoList({ tasks, onMove }) {
+  const [inProgressTask, setTaskInProgress] = useState([]);
+
+  function handleSetTaskInProgress(task) {
+    setTaskInProgress((prev) => [...prev, task]);
+    inProgressTask();
+  }
   return (
     <div className="todo-list">
       <h2 className="todo-task-label">To-Do Tasks</h2>
       {tasks.map((t, index) => (
         <div key={index} className="task-card">
           <span className="task-text">{t}</span>
-          <button className="inprogress-button">Move to in-progress</button>
+          <button className="inprogress-button" onClick={() => onMove(index)}>
+            Move to in-progress
+          </button>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function InProgressList({ tasks, onMove }) {
+  return (
+    <div className="todo-list">
+      <h2 className="todo-task-label">In Progress Tasks</h2>
+      {tasks.map((t, index) => (
+        <div key={index} className="task-card">
+          <span className="task-text">{t}</span>
+          <button className="complete-button" onClick={() => onMove(index)}>
+            Move to completed
+          </button>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function CompletedList({ tasks }) {
+  return (
+    <div className="todo-list">
+      <h2 className="todo-task-label">Completed Tasks</h2>
+      {tasks.map((t, index) => (
+        <div key={index} className="task-card">
+          <span className="task-text">{t}</span>
         </div>
       ))}
     </div>

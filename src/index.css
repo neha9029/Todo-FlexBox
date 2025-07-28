@@ -38,7 +38,8 @@ body {
 }
 
 .task-button,
-.inprogress-button {
+.inprogress-button,
+.complete-button {
   font-size: 20px;
   padding: 10px 16px;
   border: none;
@@ -50,7 +51,8 @@ body {
 }
 
 .task-button:hover,
-.inprogress-button:hover {
+.inprogress-button:hover,
+.complete-button:hover {
   background-color: #404ab5;
 }
 
