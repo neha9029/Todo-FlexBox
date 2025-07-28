@@ -66,7 +66,7 @@ function TodoList({ tasks, onMove }) {
   }
   return (
     <div className="todo-list">
-      <h2 className="todo-task-label">To-Do Tasks</h2>
+      <h2 className="task-heading">To-Do Tasks</h2>
       {tasks.map((t, index) => (
         <div key={index} className="task-card">
           <span className="task-text">{t}</span>
@@ -82,7 +82,7 @@ function TodoList({ tasks, onMove }) {
 function InProgressList({ tasks, onMove }) {
   return (
     <div className="inprogress-list">
-      <h2 className="todo-task-label">In Progress Tasks</h2>
+      <h2 className="task-heading">In Progress Tasks</h2>
       {tasks.map((t, index) => (
         <div key={index} className="task-card">
           <span className="task-text">{t}</span>
@@ -98,7 +98,7 @@ function InProgressList({ tasks, onMove }) {
 function CompletedList({ tasks }) {
   return (
     <div className="completed-list">
-      <h2 className="todo-task-label">Completed Tasks</h2>
+      <h2 className="task-heading">Completed Tasks</h2>
       {tasks.map((t, index) => (
         <div key={index} className="task-card">
           <span className="task-text">{t}</span>

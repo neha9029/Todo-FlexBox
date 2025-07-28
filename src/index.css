@@ -13,6 +13,7 @@ body {
   align-items: flex-start;
   gap: 12px;
   margin-top: 20px;
+  flex-wrap: wrap;
 }
 
 .task-label {
@@ -42,7 +43,15 @@ body {
   gap: 20px;
   align-items: flex-start;
   padding: 20px;
+  flex: 1;
 }
+
+@media (max-width: 768px) {
+  .task-board {
+    flex-direction: column;
+  }
+}
+
 .task-button,
 .inprogress-button,
 .complete-button {
@@ -67,7 +76,7 @@ body {
   cursor: not-allowed;
 }
 
-.todo-task-label {
+.task-heading {
   font-size: 20px;
   font-weight: 600;
   margin-bottom: 10px;
@@ -84,10 +93,13 @@ body {
   flex-direction: column;
   gap: 10px;
   margin-top: 20px;
-  /* min-height: 300px; */
+  min-width: 250px;
+  max-width: 100%;
 }
 
 .task-card {
+  min-width: 250px;
+  max-width: 100%;
   min-height: 60px;
   padding: 10px;
   background: #f9f9f9;
@@ -105,4 +117,6 @@ body {
   flex: 1;
   font-size: 20px;
   color: #333;
+  min-width: 100px;
+  word-break: break-word;
 }
