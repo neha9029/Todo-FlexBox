@@ -30,9 +30,11 @@ export default function App() {
   return (
     <>
       <Task task={task} setTask={setTask} onAdd={handleAddToList} />
-      <TodoList tasks={todoTasks} onMove={moveToInProgress} />
-      <InProgressList tasks={inProgressTasks} onMove={moveToCompleted} />
-      <CompletedList tasks={completedTasks} />
+      <div className="task-board">
+        <TodoList tasks={todoTasks} onMove={moveToInProgress} />
+        <InProgressList tasks={inProgressTasks} onMove={moveToCompleted} />
+        <CompletedList tasks={completedTasks} />
+      </div>
     </>
   );
 }
@@ -79,7 +81,7 @@ function TodoList({ tasks, onMove }) {
 
 function InProgressList({ tasks, onMove }) {
   return (
-    <div className="todo-list">
+    <div className="inprogress-list">
       <h2 className="todo-task-label">In Progress Tasks</h2>
       {tasks.map((t, index) => (
         <div key={index} className="task-card">
@@ -95,7 +97,7 @@ function InProgressList({ tasks, onMove }) {
 
 function CompletedList({ tasks }) {
   return (
-    <div className="todo-list">
+    <div className="completed-list">
       <h2 className="todo-task-label">Completed Tasks</h2>
       {tasks.map((t, index) => (
         <div key={index} className="task-card">
